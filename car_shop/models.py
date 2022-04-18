@@ -8,6 +8,10 @@ class Mark(models.Model):
     mark_slug = models.SlugField(max_length=255, verbose_name='Слаг поле марки')
     image = models.ImageField(upload_to='images/shop', blank=True)
 
+    class Meta:
+        db_table = "Марка"
+        verbose_name_plural = "Марки"
+
     def __str__(self):
         return self.mark_name
 
@@ -21,6 +25,10 @@ class Model(models.Model):
     def __str__(self):
         return self.model_name
 
+    class Meta:
+        db_table = "Модель"
+        verbose_name_plural = "Модели"
+
 
 class Category(models.Model):
     model = models.ForeignKey(Model, on_delete=models.CASCADE, blank=True, null=True,  related_name='model')
@@ -29,6 +37,10 @@ class Category(models.Model):
 
     def __str__(self):
         return self.category_name
+
+    class Meta:
+        db_table = "Категория"
+        verbose_name_plural = "Категории"
 
 
 class Part(models.Model):
@@ -41,3 +53,9 @@ class Part(models.Model):
     part_price = models.IntegerField(verbose_name='Цена запчасти')
     image = models.ImageField(upload_to='images/shop',)
 
+    def __str__(self):
+        return f'{self.part_name}:{self.part_price}'
+
+    class Meta:
+        db_table = "Деталь"
+        verbose_name_plural = 'Детали'
