@@ -20,6 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('users.urls')),
     path('api/', include('dj_rest_auth.urls')),
+    path('api/shop/', include('car_shop.urls')),
 ]
 
 
