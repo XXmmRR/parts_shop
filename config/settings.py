@@ -34,6 +34,9 @@ INSTALLED_APPS = [
     'users',
     # Rest
     'rest_framework',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+    'allauth.account',
     'knox',
     # Django
     'django.contrib.admin',
@@ -42,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'dj_rest_auth.registration',
     # Local
     'car_shop',
 ]
@@ -139,3 +143,6 @@ REST_FRAMEWORK = {
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+SITE_ID = 1
