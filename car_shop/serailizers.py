@@ -13,3 +13,8 @@ class ModelSerializer(serializers.ModelSerializer):
         model = Model
         fields = ('mark', 'model_name', 'model_slug', 'image')
 
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ('model', 'category_name', 'category_slug')

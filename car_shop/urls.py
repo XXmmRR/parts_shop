@@ -1,11 +1,9 @@
-from .views import CreateMark, ListMark, DetailMark, CreateModel, ListModel, DetailModel
-from django.urls import path
+from .views import MarkViewSet, ModelViewSet, CategoryViewSet
+from rest_framework.routers import SimpleRouter
 
-urlpatterns = [
-    path('mark/create_mark/', CreateMark.as_view(), name='register_mark'),
-    path('mark/mark_list/', ListMark.as_view(), name='mark_list'),
-    path('mark/<int:pk>/', DetailMark.as_view(), name='detail_mark'),
-    path('model/create_model/', CreateModel.as_view(), name='register_model'),
-    path('model/list_model/', ListModel.as_view(), name='model_list'),
-    path('model/<int:pk>/', DetailModel.as_view(), name='detail_model')
-]
+router = SimpleRouter()
+router.register('marks', MarkViewSet, basename='marks')
+router.register('models', ModelViewSet, basename='models')
+router.register('category', CategoryViewSet, basename='category')
+
+urlpatterns = router.urls
