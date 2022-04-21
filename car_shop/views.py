@@ -1,5 +1,5 @@
-from .models import Mark, Model, Category
-from .serailizers import MarkSerializer, ModelSerializer, CategorySerializer
+from .models import Mark, Model, Category, Part
+from .serailizers import MarkSerializer, ModelSerializer, CategorySerializer, PartSerializer
 from rest_framework import viewsets
 
 
@@ -16,3 +16,8 @@ class ModelViewSet(viewsets.ModelViewSet):
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+
+
+class PartViewSet(viewsets.ModelViewSet):
+    queryset = Part.objects.all()
+    serializer_class = PartSerializer
