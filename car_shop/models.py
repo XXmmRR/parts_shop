@@ -17,7 +17,7 @@ class Mark(models.Model):
 
 
 class Model(models.Model):
-    mark = models.ForeignKey(Mark, on_delete=models.CASCADE, related_name='mark')
+    mark = models.ForeignKey(Mark, on_delete=models.CASCADE, related_name='mark', verbose_name='Марка')
     model_name = models.CharField(max_length=255, verbose_name='Название модели')
     model_slug = models.SlugField(max_length=255, verbose_name='Слаг поле модели')
     image = models.ImageField(upload_to='images/shop')
@@ -31,7 +31,8 @@ class Model(models.Model):
 
 
 class Category(models.Model):
-    model = models.ForeignKey(Model, on_delete=models.CASCADE, blank=True, null=True,  related_name='model')
+    model = models.ForeignKey(Model, on_delete=models.CASCADE, blank=True, null=True,  related_name='model',
+                              verbose_name='Модель')
     category_name = models.CharField(max_length=250, verbose_name='Название категории',)
     category_slug = models.SlugField(max_length=250, verbose_name='Слаг поле категории',)
 
@@ -44,7 +45,8 @@ class Category(models.Model):
 
 
 class Part(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, null=True, related_name='category')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, null=True, related_name='category',
+                                 verbose_name='Категория')
     article = models.CharField(max_length=255, verbose_name='Оригинальный артикул')
     article_second = models.CharField(max_length=255, verbose_name='Дополнительный артикул')
     part_name = models.CharField(max_length=255, verbose_name='Наименование')

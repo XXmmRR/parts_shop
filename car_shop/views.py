@@ -35,7 +35,6 @@ class PartCodeFilter(generics.ListAPIView):
 
 
 class PartPriceFilter(generics.ListAPIView):
-
     serializer_class = PartSerializer
 
     def get_queryset(self):
