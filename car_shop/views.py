@@ -26,12 +26,35 @@ class PartViewSet(viewsets.ModelViewSet):
 
 
 class PartCodeFilter(generics.ListAPIView):
-
     serializer_class = PartSerializer
 
     def get_queryset(self):
         code = self.kwargs['code']
         return Part.objects.filter(Q(article=code) | Q(article_second=code))
+
+
+class MarkNameFilter(generics.ListAPIView):
+    serializer_class = MarkSerializer
+
+    def get_queryset(self):
+        name = self.kwargs['name']
+        return Mark.objects.filter(mark_name=name)
+
+
+class ModelNameFilter(generics.ListAPIView):
+    serializer_class = ModelSerializer
+
+    def get_queryset(self):
+        model = self.kwargs['model']
+        return Model.objects.filter(model_name=model)
+
+
+class CategoryFilter(generics.ListAPIView):
+    serializer_class = CategorySerializer
+
+    def get_queryset(self):
+        category = self.kwargs['category']
+        return Category.objects.filter(category_name=category)
 
 
 class PartPriceFilter(generics.ListAPIView):
